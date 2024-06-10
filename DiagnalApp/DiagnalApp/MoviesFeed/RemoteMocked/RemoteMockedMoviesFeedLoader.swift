@@ -16,11 +16,25 @@ class RemoteMockedMoviesFeedLoader: MoviesFeedLoader {
         self.client = client
     }
     
+    enum Error: Swift.Error{
+        case invalidDataError
+        case parseError
+    }
+    
     typealias Result = MoviesFeedLoader.Result
+    
     func load(_ req: PagedMoviesRequest, completion: @escaping (Result) -> Void) {
         let fullFileName = getFullFileName(baseName: baseFileName, req: req)
-        client.get(fullFileName) { _ in
+        client.get(fullFileName) { [weak self] result in
+            guard self != nil else { return }
             
+            switch result{
+            case .success(_):
+                break
+            case .failure:
+                completion(.failure(Error.invalidDataError))
+            
+            }
         }
     }
     

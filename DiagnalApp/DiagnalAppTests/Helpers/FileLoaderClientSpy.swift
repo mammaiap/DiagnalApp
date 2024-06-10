@@ -20,5 +20,12 @@ class FileLoaderClientSpy: FileLoaderClient {
         messages.append((fileName,completion))
     }
     
+    func complete(with error: Error, at index: Int = 0) {
+        messages[index].completion(.failure(error))
+    }
+    
+    func complete(with data: Data, at index: Int = 0) {                
+        messages[index].completion(.success(data))
+    }
     
 }

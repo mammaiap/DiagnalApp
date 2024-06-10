@@ -45,6 +45,15 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
         XCTAssertEqual(client.requestedFileNames, [expectedFileName, expectedFileName])
     }
     
+    func test_load_deliversErrorOnClientError() {        
+        let (sut, client) = makeSUT()
+        expect(sut,toCompleteWith: failure(.invalidDataError)) {
+            let clientError = NSError(domain: "Test", code: 0)
+            client.complete(with: clientError)
+        }
+        
+    }
+    
     
     // MARK: - Helpers
     
@@ -55,6 +64,36 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
         trackMemoryLeaks(client,file: file,line: line)
         return (sut,client)
         
+    }
+    
+    private func failure(_ error: RemoteMockedMoviesFeedLoader.Error) -> RemoteMockedMoviesFeedLoader.Result {
+        return .failure(error)
+        
+    }
+    
+    private func expect(_ sut: RemoteMockedMoviesFeedLoader, toCompleteWith expectedResult: RemoteMockedMoviesFeedLoader.Result, when action: ()-> Void, file: StaticString = #file, line: UInt = #line) {
+        
+        let exp = expectation(description: "wait for load completion")
+        let req = makePagedMoviesRequest(pagedNum: 1)
+        sut.load(req){receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedItems), .success(expectedItems)):
+                XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
+                
+            case let (.failure(receivedError as RemoteMockedMoviesFeedLoader.Error), .failure(expectedError as RemoteMockedMoviesFeedLoader.Error)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+                
+            default:
+                XCTFail("Expected result \(expectedResult) got \(receivedResult) instead",file: file, line: line)
+            }
+            
+            exp.fulfill()
+            
+        }
+        
+        action()
+        
+        wait(for: [exp], timeout: 1.0)
     }
     
     private func makePagedMoviesRequest(pagedNum: Int = 1) -> PagedMoviesRequest {
