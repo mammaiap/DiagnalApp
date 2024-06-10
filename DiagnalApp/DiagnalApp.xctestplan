@@ -17,7 +17,6 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:DiagnalApp.xcodeproj",
         "identifier" : "4ADD54D42C16C5CD0026BD08",
