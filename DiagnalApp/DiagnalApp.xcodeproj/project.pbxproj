@@ -31,6 +31,7 @@
 		4ADD55142C16CB410026BD08 /* poster3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD550A2C16CB410026BD08 /* poster3.jpg */; };
 		4ADD55172C16CC1A0026BD08 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD55162C16CC1A0026BD08 /* UIFont+Ext.swift */; };
 		4ADD551B2C16D2450026BD08 /* MoviesFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD551A2C16D2450026BD08 /* MoviesFeed.swift */; };
+		4ADD551D2C16D2A70026BD08 /* MoviesFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD551C2C16D2A70026BD08 /* MoviesFeedLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		4ADD550A2C16CB410026BD08 /* poster3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poster3.jpg; sourceTree = "<group>"; };
 		4ADD55162C16CC1A0026BD08 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		4ADD551A2C16D2450026BD08 /* MoviesFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesFeed.swift; sourceTree = "<group>"; };
+		4ADD551C2C16D2A70026BD08 /* MoviesFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesFeedLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				4ADD551A2C16D2450026BD08 /* MoviesFeed.swift */,
+				4ADD551C2C16D2A70026BD08 /* MoviesFeedLoader.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				4ADD54C32C16C5CC0026BD08 /* AppDelegate.swift in Sources */,
 				4ADD551B2C16D2450026BD08 /* MoviesFeed.swift in Sources */,
 				4ADD54C52C16C5CC0026BD08 /* SceneDelegate.swift in Sources */,
+				4ADD551D2C16D2A70026BD08 /* MoviesFeedLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
