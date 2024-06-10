@@ -38,6 +38,7 @@
 		4ADD55282C16D5ED0026BD08 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD55272C16D5ED0026BD08 /* XCTestCase+MemoryLeakTracking.swift */; };
 		4ADD552A2C16D62C0026BD08 /* FileLoaderClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD55292C16D62C0026BD08 /* FileLoaderClientSpy.swift */; };
 		4ADD552C2C16EDA50026BD08 /* MoviesFeedMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD552B2C16EDA50026BD08 /* MoviesFeedMapper.swift */; };
+		4ADD552E2C170F760026BD08 /* JSONFileLoaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD552D2C170F760026BD08 /* JSONFileLoaderClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		4ADD55272C16D5ED0026BD08 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		4ADD55292C16D62C0026BD08 /* FileLoaderClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoaderClientSpy.swift; sourceTree = "<group>"; };
 		4ADD552B2C16EDA50026BD08 /* MoviesFeedMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesFeedMapper.swift; sourceTree = "<group>"; };
+		4ADD552D2C170F760026BD08 /* JSONFileLoaderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFileLoaderClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				4ADD551F2C16D3590026BD08 /* FileLoaderClient.swift */,
+				4ADD552D2C170F760026BD08 /* JSONFileLoaderClient.swift */,
 			);
 			path = FileLoader;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				4ADD54C52C16C5CC0026BD08 /* SceneDelegate.swift in Sources */,
 				4ADD55202C16D3590026BD08 /* FileLoaderClient.swift in Sources */,
 				4ADD551D2C16D2A70026BD08 /* MoviesFeedLoader.swift in Sources */,
+				4ADD552E2C170F760026BD08 /* JSONFileLoaderClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
