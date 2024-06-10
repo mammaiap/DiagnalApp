@@ -14,6 +14,21 @@
 		4ADD54CC2C16C5CD0026BD08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD54CB2C16C5CD0026BD08 /* Assets.xcassets */; };
 		4ADD54CF2C16C5CD0026BD08 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD54CE2C16C5CD0026BD08 /* Base */; };
 		4ADD54DA2C16C5CD0026BD08 /* DiagnalAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD54D92C16C5CD0026BD08 /* DiagnalAppTests.swift */; };
+		4ADD54FA2C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE2.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD54F72C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE2.json */; };
+		4ADD54FB2C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE1.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD54F82C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE1.json */; };
+		4ADD54FC2C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE3.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD54F92C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE3.json */; };
+		4ADD54FF2C16CB1A0026BD08 /* TitilliumWeb-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD54FD2C16CB1A0026BD08 /* TitilliumWeb-Light.ttf */; };
+		4ADD55002C16CB1A0026BD08 /* TitilliumWeb-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD54FE2C16CB1A0026BD08 /* TitilliumWeb-Regular.ttf */; };
+		4ADD550B2C16CB410026BD08 /* poster4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD55012C16CB410026BD08 /* poster4.jpg */; };
+		4ADD550C2C16CB410026BD08 /* poster8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD55022C16CB410026BD08 /* poster8.jpg */; };
+		4ADD550D2C16CB410026BD08 /* poster2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD55032C16CB410026BD08 /* poster2.jpg */; };
+		4ADD550E2C16CB410026BD08 /* poster5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD55042C16CB410026BD08 /* poster5.jpg */; };
+		4ADD550F2C16CB410026BD08 /* poster1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD55052C16CB410026BD08 /* poster1.jpg */; };
+		4ADD55102C16CB410026BD08 /* placeholder_for_missing_posters.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD55062C16CB410026BD08 /* placeholder_for_missing_posters.png */; };
+		4ADD55112C16CB410026BD08 /* poster6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD55072C16CB410026BD08 /* poster6.jpg */; };
+		4ADD55122C16CB410026BD08 /* poster7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD55082C16CB410026BD08 /* poster7.jpg */; };
+		4ADD55132C16CB410026BD08 /* poster9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD55092C16CB410026BD08 /* poster9.jpg */; };
+		4ADD55142C16CB410026BD08 /* poster3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD550A2C16CB410026BD08 /* poster3.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +53,21 @@
 		4ADD54D52C16C5CD0026BD08 /* DiagnalAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiagnalAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ADD54D92C16C5CD0026BD08 /* DiagnalAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnalAppTests.swift; sourceTree = "<group>"; };
 		4ADD54F22C16C6CF0026BD08 /* DiagnalApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = DiagnalApp.xctestplan; sourceTree = "<group>"; };
+		4ADD54F72C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "CONTENTLISTINGPAGE-PAGE2.json"; sourceTree = "<group>"; };
+		4ADD54F82C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "CONTENTLISTINGPAGE-PAGE1.json"; sourceTree = "<group>"; };
+		4ADD54F92C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "CONTENTLISTINGPAGE-PAGE3.json"; sourceTree = "<group>"; };
+		4ADD54FD2C16CB1A0026BD08 /* TitilliumWeb-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Light.ttf"; sourceTree = "<group>"; };
+		4ADD54FE2C16CB1A0026BD08 /* TitilliumWeb-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitilliumWeb-Regular.ttf"; sourceTree = "<group>"; };
+		4ADD55012C16CB410026BD08 /* poster4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poster4.jpg; sourceTree = "<group>"; };
+		4ADD55022C16CB410026BD08 /* poster8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poster8.jpg; sourceTree = "<group>"; };
+		4ADD55032C16CB410026BD08 /* poster2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poster2.jpg; sourceTree = "<group>"; };
+		4ADD55042C16CB410026BD08 /* poster5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poster5.jpg; sourceTree = "<group>"; };
+		4ADD55052C16CB410026BD08 /* poster1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poster1.jpg; sourceTree = "<group>"; };
+		4ADD55062C16CB410026BD08 /* placeholder_for_missing_posters.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder_for_missing_posters.png; sourceTree = "<group>"; };
+		4ADD55072C16CB410026BD08 /* poster6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poster6.jpg; sourceTree = "<group>"; };
+		4ADD55082C16CB410026BD08 /* poster7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poster7.jpg; sourceTree = "<group>"; };
+		4ADD55092C16CB410026BD08 /* poster9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poster9.jpg; sourceTree = "<group>"; };
+		4ADD550A2C16CB410026BD08 /* poster3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poster3.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +117,7 @@
 				4ADD54CB2C16C5CD0026BD08 /* Assets.xcassets */,
 				4ADD54CD2C16C5CD0026BD08 /* LaunchScreen.storyboard */,
 				4ADD54D02C16C5CD0026BD08 /* Info.plist */,
+				4ADD54F32C16CAA40026BD08 /* Resources */,
 			);
 			path = DiagnalApp;
 			sourceTree = "<group>";
@@ -97,6 +128,52 @@
 				4ADD54D92C16C5CD0026BD08 /* DiagnalAppTests.swift */,
 			);
 			path = DiagnalAppTests;
+			sourceTree = "<group>";
+		};
+		4ADD54F32C16CAA40026BD08 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4ADD54F62C16CACA0026BD08 /* PosterImages */,
+				4ADD54F52C16CAC30026BD08 /* Fonts */,
+				4ADD54F42C16CAB10026BD08 /* JSON */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4ADD54F42C16CAB10026BD08 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				4ADD54F82C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE1.json */,
+				4ADD54F72C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE2.json */,
+				4ADD54F92C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE3.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		4ADD54F52C16CAC30026BD08 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4ADD54FD2C16CB1A0026BD08 /* TitilliumWeb-Light.ttf */,
+				4ADD54FE2C16CB1A0026BD08 /* TitilliumWeb-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		4ADD54F62C16CACA0026BD08 /* PosterImages */ = {
+			isa = PBXGroup;
+			children = (
+				4ADD55062C16CB410026BD08 /* placeholder_for_missing_posters.png */,
+				4ADD55052C16CB410026BD08 /* poster1.jpg */,
+				4ADD55032C16CB410026BD08 /* poster2.jpg */,
+				4ADD550A2C16CB410026BD08 /* poster3.jpg */,
+				4ADD55012C16CB410026BD08 /* poster4.jpg */,
+				4ADD55042C16CB410026BD08 /* poster5.jpg */,
+				4ADD55072C16CB410026BD08 /* poster6.jpg */,
+				4ADD55082C16CB410026BD08 /* poster7.jpg */,
+				4ADD55022C16CB410026BD08 /* poster8.jpg */,
+				4ADD55092C16CB410026BD08 /* poster9.jpg */,
+			);
+			path = PosterImages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,8 +258,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ADD54CC2C16C5CD0026BD08 /* Assets.xcassets in Resources */,
+				4ADD55102C16CB410026BD08 /* placeholder_for_missing_posters.png in Resources */,
+				4ADD55142C16CB410026BD08 /* poster3.jpg in Resources */,
 				4ADD54CF2C16C5CD0026BD08 /* Base in Resources */,
+				4ADD54FC2C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE3.json in Resources */,
+				4ADD54FF2C16CB1A0026BD08 /* TitilliumWeb-Light.ttf in Resources */,
+				4ADD54FB2C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE1.json in Resources */,
+				4ADD550F2C16CB410026BD08 /* poster1.jpg in Resources */,
+				4ADD55132C16CB410026BD08 /* poster9.jpg in Resources */,
 				4ADD54CA2C16C5CC0026BD08 /* Base in Resources */,
+				4ADD55002C16CB1A0026BD08 /* TitilliumWeb-Regular.ttf in Resources */,
+				4ADD550D2C16CB410026BD08 /* poster2.jpg in Resources */,
+				4ADD550E2C16CB410026BD08 /* poster5.jpg in Resources */,
+				4ADD55112C16CB410026BD08 /* poster6.jpg in Resources */,
+				4ADD54FA2C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE2.json in Resources */,
+				4ADD550B2C16CB410026BD08 /* poster4.jpg in Resources */,
+				4ADD55122C16CB410026BD08 /* poster7.jpg in Resources */,
+				4ADD550C2C16CB410026BD08 /* poster8.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
