@@ -19,9 +19,9 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
         
         let request = makePagedMoviesRequest(pagedNum: 1)
         
-        let expectedFileName = "CONTENTLISTINGPAGE-PAGE" + "\(request.page)"
+        let baseFileName = getBaseFileName()
         
-        let baseFileName = "CONTENTLISTINGPAGE-PAGE"
+        let expectedFileName = baseFileName + "\(request.page)"
         
         let (sut, client) = makeSUT(baseFile: baseFileName)
         sut.load(request) { _ in }
@@ -32,10 +32,10 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
     func test_loadTwice_requestsDataFromFileNameTwice() {
         
         let request = makePagedMoviesRequest(pagedNum: 1)
-
-        let expectedFileName = "CONTENTLISTINGPAGE-PAGE" + "\(request.page)"
         
-        let baseFileName = "CONTENTLISTINGPAGE-PAGE"
+        let baseFileName = getBaseFileName()
+
+        let expectedFileName = baseFileName + "\(request.page)"        
         
         let (sut, client) = makeSUT(baseFile: baseFileName)
 
@@ -59,6 +59,10 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
     
     private func makePagedMoviesRequest(pagedNum: Int = 1) -> PagedMoviesRequest {
         return PagedMoviesRequest(page: pagedNum)
+    }
+    
+    private func getBaseFileName() -> String {
+        return "CONTENTLISTINGPAGE-PAGE"
     }
 
 }
