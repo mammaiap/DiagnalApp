@@ -42,7 +42,7 @@ class RemoteMockedMoviesFeedLoader: MoviesFeedLoader {
 }
 
 extension RemoteMockedMoviesFeedLoader{
-    func getFullFileName(baseName: String ,req: PagedMoviesRequest) -> String {
+    private func getFullFileName(baseName: String ,req: PagedMoviesRequest) -> String {
         return baseName + "\(req.page)"
     }
     
