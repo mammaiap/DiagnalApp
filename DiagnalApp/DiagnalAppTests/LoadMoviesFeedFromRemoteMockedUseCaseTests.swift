@@ -91,12 +91,13 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
       var output: Any? = nil
       sut?.load(.init(page: 1), completion: { output = $0 })
       sut = nil
-      client.complete(withSuccess: makeData())     
+      client.complete(withSuccess: makeData())
       XCTAssertNil(output)
     }
-    
-    
-    // MARK: - Helpers
+}
+
+// MARK: - Helpers
+extension LoadMoviesFeedFromRemoteMockedUseCaseTests {
     
     private func makeSUT(baseFile: String = "", file: StaticString = #file, line: UInt = #line) -> (sut: RemoteMockedMoviesFeedLoader,client: FileLoaderClientSpy) {
         let client = FileLoaderClientSpy()
@@ -148,7 +149,7 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
     
     func makeMoviesFeed(items: [(model: MoviesCard, json: [String : Any])] = [],title: String = "", totalItems: Int = 1, pageNumber: Int = 1, pageSize: Int = 1) -> (model: MoviesFeed, json: [String: Any]) {
 
-      let model = MoviesFeed(title: title, 
+      let model = MoviesFeed(title: title,
                           totalContentItems: totalItems,
                           pageNum: pageNumber,
                           pageSize: pageSize,
@@ -160,7 +161,7 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
           "content": items.map { $0.json }
         ]
      
-    let pageDict: [String: Any] = [          
+    let pageDict: [String: Any] = [
           "title": title,
           "total-content-items": "\(totalItems)",
           "page-num": "\(pageNumber)",
@@ -170,7 +171,7 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
         
 
       let json: [String: Any] = [
-        "page": pageDict        
+        "page": pageDict
       ]
 
       return (model, json.compactMapValues { $0 })
@@ -183,7 +184,7 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
         posterImage: imagePath ?? ""
       )
 
-      let json: [String: Any] = [        
+      let json: [String: Any] = [
         "name": model.name,
         "poster-image": model.posterImage
       ]
@@ -198,5 +199,4 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
     private func getBaseFileName() -> String {
         return "CONTENTLISTINGPAGE-PAGE"
     }
-
 }
