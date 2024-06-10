@@ -65,6 +65,15 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
         
     }
     
+    func test_load_delivers_empty_collection_on_success_response_with_no_items() {
+      let (sut, client) = makeSUT()
+      let emptyPage = makeMoviesFeed(items: [],title: "title1")
+      let emptyPageData = makeItemsJSONData(for: emptyPage.json)
+      expect(sut, toCompleteWith: .success(emptyPage.model), when: {
+        client.complete(withSuccess: emptyPageData)
+      })
+    }
+    
     
     // MARK: - Helpers
     
@@ -105,6 +114,56 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
         action()
         
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func makeItemsJSONData(for items: [String: Any]) -> Data {
+      let data = try! JSONSerialization.data(withJSONObject: items)
+      return data
+    }
+    
+    func makeMoviesFeed(items: [(model: MoviesCard, json: [String : Any])] = [],title: String = "", totalItems: Int = 1, pageNumber: Int = 1, pageSize: Int = 1) -> (model: MoviesFeed, json: [String: Any]) {
+
+      let model = MoviesFeed(title: title, 
+                          totalContentItems: totalItems,
+                          pageNum: pageNumber,
+                          pageSize: pageSize,
+                          items: items.map { $0.model }
+                          )
+        
+      
+    let contentItemsDict: [String: Any] = [
+          "content": items.map { $0.json }
+        ]
+     
+    let pageDict: [String: Any] = [          
+          "title": title,
+          "total-content-items": "\(totalItems)",
+          "page-num": "\(pageNumber)",
+          "page-size": "\(pageSize)",
+          "content-items": contentItemsDict
+        ]
+        
+
+      let json: [String: Any] = [
+        "page": pageDict        
+      ]
+
+      return (model, json.compactMapValues { $0 })
+    }
+    
+    func makeMoviesCard(name: String? = nil, imagePath: String? = nil ) -> (model: MoviesCard, json: [String: Any]) {
+        
+      let model = MoviesCard(
+        name: name ?? "",
+        posterImage: imagePath ?? ""
+      )
+
+      let json: [String: Any] = [        
+        "name": model.name,
+        "poster-image": model.posterImage
+      ]
+
+      return (model, json)
     }
     
     private func makePagedMoviesRequest(pagedNum: Int = 1) -> PagedMoviesRequest {
