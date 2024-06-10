@@ -49,7 +49,18 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
         let (sut, client) = makeSUT()
         expect(sut,toCompleteWith: failure(.invalidDataError)) {
             let clientError = NSError(domain: "Test", code: 0)
-            client.complete(with: clientError)
+            client.complete(withFailure: clientError)
+        }
+        
+    }
+    
+    func test_load_deliversErrorWithInvalidJSON() {
+        
+        let (sut, client) = makeSUT()
+        
+        expect(sut,toCompleteWith: failure(.parseError)) {
+            let invalidJSON = Data("invalid json".utf8)
+            client.complete(withSuccess: invalidJSON)
         }
         
     }

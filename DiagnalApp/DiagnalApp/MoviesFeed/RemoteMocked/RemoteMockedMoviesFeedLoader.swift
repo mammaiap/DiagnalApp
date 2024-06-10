@@ -26,11 +26,10 @@ class RemoteMockedMoviesFeedLoader: MoviesFeedLoader {
     func load(_ req: PagedMoviesRequest, completion: @escaping (Result) -> Void) {
         let fullFileName = getFullFileName(baseName: baseFileName, req: req)
         client.get(fullFileName) { [weak self] result in
-            guard self != nil else { return }
-            
+            guard self != nil else { return }            
             switch result{
-            case .success(_):
-                break
+            case let .success(data):
+                completion(RemoteMockedMoviesFeedLoader.map(data))
             case .failure:
                 completion(.failure(Error.invalidDataError))
             
@@ -45,5 +44,15 @@ class RemoteMockedMoviesFeedLoader: MoviesFeedLoader {
 extension RemoteMockedMoviesFeedLoader{
     func getFullFileName(baseName: String ,req: PagedMoviesRequest) -> String {
         return baseName + "\(req.page)"
+    }
+    
+    private static func map(_ data: Data) -> Result {
+        do{
+            let feed = try MoviesFeedMapper.map(data)
+            return (.success(feed))
+        }catch{
+            return(.failure(error))
+        }
+        
     }
 }

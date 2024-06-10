@@ -37,6 +37,7 @@
 		4ADD55252C16D53B0026BD08 /* LoadMoviesFeedFromRemoteMockedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD55242C16D53B0026BD08 /* LoadMoviesFeedFromRemoteMockedUseCaseTests.swift */; };
 		4ADD55282C16D5ED0026BD08 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD55272C16D5ED0026BD08 /* XCTestCase+MemoryLeakTracking.swift */; };
 		4ADD552A2C16D62C0026BD08 /* FileLoaderClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD55292C16D62C0026BD08 /* FileLoaderClientSpy.swift */; };
+		4ADD552C2C16EDA50026BD08 /* MoviesFeedMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD552B2C16EDA50026BD08 /* MoviesFeedMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		4ADD55242C16D53B0026BD08 /* LoadMoviesFeedFromRemoteMockedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoviesFeedFromRemoteMockedUseCaseTests.swift; sourceTree = "<group>"; };
 		4ADD55272C16D5ED0026BD08 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		4ADD55292C16D62C0026BD08 /* FileLoaderClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoaderClientSpy.swift; sourceTree = "<group>"; };
+		4ADD552B2C16EDA50026BD08 /* MoviesFeedMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesFeedMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 		4ADD55212C16D3EC0026BD08 /* RemoteMocked */ = {
 			isa = PBXGroup;
 			children = (
+				4ADD552B2C16EDA50026BD08 /* MoviesFeedMapper.swift */,
 				4ADD55222C16D40F0026BD08 /* RemoteMockedMoviesFeedLoader.swift */,
 			);
 			path = RemoteMocked;
@@ -369,6 +372,7 @@
 				4ADD55232C16D40F0026BD08 /* RemoteMockedMoviesFeedLoader.swift in Sources */,
 				4ADD54C32C16C5CC0026BD08 /* AppDelegate.swift in Sources */,
 				4ADD551B2C16D2450026BD08 /* MoviesFeed.swift in Sources */,
+				4ADD552C2C16EDA50026BD08 /* MoviesFeedMapper.swift in Sources */,
 				4ADD54C52C16C5CC0026BD08 /* SceneDelegate.swift in Sources */,
 				4ADD55202C16D3590026BD08 /* FileLoaderClient.swift in Sources */,
 				4ADD551D2C16D2A70026BD08 /* MoviesFeedLoader.swift in Sources */,
