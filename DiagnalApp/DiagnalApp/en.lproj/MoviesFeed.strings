@@ -9,3 +9,4 @@
 "text.feed.error.title" = "Error";
 "text.feed.load.error" = "Couldn't load the JSON file";
 "text.feed.error.ok" = "OK";
+"text.search.error.notfound" = "Searching movies not found";

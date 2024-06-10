@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
     private var baseFileName = "CONTENTLISTINGPAGE-PAGE"
     
     private lazy var client: FileLoaderClient = {
@@ -41,9 +41,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func makeAndShowMoviesFeedScene() -> MoviesFeedViewController {
         let remoteFeedLoader = RemoteMockedMoviesFeedLoader(baseFileName: baseFileName, client: client)
         
-        let feedViewController = MoviesFeedUIComposer.moviesFeedComposedWith(feedLoader: remoteFeedLoader)
+        let feedViewController = MoviesFeedUIComposer.moviesFeedComposedWith(feedLoader: remoteFeedLoader, onSearch: showSearchMoviesScene)
         
         return feedViewController
+        
+    }
+    
+    private func showSearchMoviesScene(for allMovies: [MoviesCard]) {
+        
+        let searchController = MoviesSearchUIComposer.moviesSearchComposedWith(allmovieCards: allMovies)
+        
+        DispatchQueue.main.async{
+            self.navigationController.pushViewController(searchController, animated: true)
+        }
         
     }
 

@@ -41,7 +41,13 @@ extension Localized {
                 comment: "Error Alert OK button text")
         }
         
-        
+        static var searchNotFoundError: String {
+            NSLocalizedString(
+                "text.search.error.notfound",
+                tableName: table,
+                bundle: bundle,
+                comment: "Error message displayed when we can't find the searched movies.")
+        }
         
     }
 }

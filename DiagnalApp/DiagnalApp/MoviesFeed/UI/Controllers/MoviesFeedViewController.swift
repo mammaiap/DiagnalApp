@@ -14,13 +14,13 @@ class MoviesFeedViewController: UIViewController {
     @IBOutlet private(set) var lblTitle: UILabel!
     @IBOutlet private(set) var btnBack: UIButton!
     @IBOutlet private(set) var btnSearch: UIButton!
-    @IBOutlet private(set) var txtSearch: UISearchBar!
     @IBOutlet weak var vwLoading: UIView!
    
     
     private var isViewAppeared: Bool = false
     private var isLoadingMore: Bool = false
-    private var isSearching: Bool = false
+    
+    var onSearch: ([MoviesCard]) -> Void = { _ in }
     
     private var viewModel: MoviesFeedViewModel
     
@@ -59,18 +59,22 @@ class MoviesFeedViewController: UIViewController {
         cvMovieListing.reloadData()
     }
     
-    private func refresh() {
+    private func refresh(){
         viewModel.loadFeed()
+    }
+    
+    @objc private func pullToRefresh(_ sender: Any) {
+        refresh()
     }
     
     private func setupUI() {
         cvMovieListing.delegate = self
         cvMovieListing.dataSource = self
         cvMovieListing.register(UINib(nibName: MovieCell.cellID, bundle: nil), forCellWithReuseIdentifier: MovieCell.cellID)
-        txtSearch.delegate = self
+       
         
         cvMovieListing.refreshControl = UIRefreshControl()
-        txtSearch.isHidden = true
+        cvMovieListing.refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.toolbar.isHidden = true
         hideSpinnerView()
@@ -78,18 +82,15 @@ class MoviesFeedViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func btnBackTap(_ sender: UIButton) {
-        
+        // pop to its ParentViewController
         
     }
     
     @IBAction func btnSearchTap(_ sender: UIButton) {
-        /*
-        if sender.isSelected {
-            isSearching = false
-            searching(isStart: false) // Searching stops
-        } else {
-            searching(isStart: true) // Searching starts
-        }*/
+        
+        let allMovies = viewModel.allMovieCards
+        onSearch(allMovies)
+        
     }
     
 }
@@ -221,14 +222,10 @@ extension MoviesFeedViewController: UICollectionViewDelegateFlowLayout {
 
 extension MoviesFeedViewController{
     func displayNewlyFetchedItems(_ newItems: [MoviesCellController]){
-        if isSearching{
-            self.displaySearchedItems(newItems)
+        if(collectionModel.isEmpty){
+            self.appendItems(newItems)
         }else{
-            if(collectionModel.isEmpty){
-                self.appendItems(newItems)
-            }else{
-                self.insertItems(newItems)
-            }
+            self.insertItems(newItems)
         }
     }
 }
@@ -246,13 +243,6 @@ private extension MoviesFeedViewController{
     
     private func hideSpinnerView(){
         vwLoading.isHidden = true
-    }
-    
-    private func displaySearchedItems(_ newItems: [MoviesCellController]){
-        collectionModel.removeAll()
-        collectionModel.append(contentsOf: newItems)
-        cvMovieListing.reloadData()
-        
     }
     
     private func appendItems(_ newItems: [MoviesCellController]){
@@ -287,39 +277,6 @@ private extension MoviesFeedViewController{
     }
 }
 
-private extension MoviesFeedViewController{
-    func searching(isStart: Bool) {
 
-        UIView.animate(withDuration: 0.5,
-                       delay: 0,
-                       usingSpringWithDamping: 0.8,
-                       initialSpringVelocity: 0.5,
-                       options: [.curveEaseInOut, .beginFromCurrentState],
-                       animations: {
-            self.btnBack.alpha = isStart ? 0.0 : 1.0
-            self.btnBack.isHidden = isStart
-            self.lblTitle.alpha = isStart ? 0.0 : 1.0
-            self.lblTitle.isHidden = isStart
-            self.txtSearch.isHidden = !isStart
-            self.btnSearch.isSelected = isStart
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-        
-        _ = isStart ? txtSearch.becomeFirstResponder() : txtSearch.resignFirstResponder()
-        isSearching ? Void() : cvMovieListing.reloadData()
-        txtSearch.text = ""
-       
-    }
-}
 
-extension MoviesFeedViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-       /* if searchText.count >= 2 {
-            isSearching = true
-            viewModel.searchMovies(searchText)
-        }*/
-        
-        
-    }
-}
+

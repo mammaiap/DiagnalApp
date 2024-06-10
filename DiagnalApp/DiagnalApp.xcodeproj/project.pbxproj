@@ -53,6 +53,10 @@
 		4ADD554C2C17312C0026BD08 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD554B2C17312C0026BD08 /* Localized.swift */; };
 		4ADD554E2C1731D40026BD08 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD554D2C1731D40026BD08 /* MainQueueDispatchDecorator.swift */; };
 		4ADD55502C1731FF0026BD08 /* MoviesFeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD554F2C1731FF0026BD08 /* MoviesFeedUIComposer.swift */; };
+		4ADD55622C1763D40026BD08 /* MoviesSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD55612C1763D40026BD08 /* MoviesSearch.storyboard */; };
+		4ADD55642C1763FA0026BD08 /* MoviesSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD55632C1763FA0026BD08 /* MoviesSearchViewController.swift */; };
+		4ADD55662C1764140026BD08 /* MoviesSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD55652C1764140026BD08 /* MoviesSearchViewModel.swift */; };
+		4ADD55682C1765AD0026BD08 /* MoviesSearchUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD55672C1765AD0026BD08 /* MoviesSearchUIComposer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +120,10 @@
 		4ADD554B2C17312C0026BD08 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		4ADD554D2C1731D40026BD08 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 		4ADD554F2C1731FF0026BD08 /* MoviesFeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesFeedUIComposer.swift; sourceTree = "<group>"; };
+		4ADD55612C1763D40026BD08 /* MoviesSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MoviesSearch.storyboard; sourceTree = "<group>"; };
+		4ADD55632C1763FA0026BD08 /* MoviesSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesSearchViewController.swift; sourceTree = "<group>"; };
+		4ADD55652C1764140026BD08 /* MoviesSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesSearchViewModel.swift; sourceTree = "<group>"; };
+		4ADD55672C1765AD0026BD08 /* MoviesSearchUIComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesSearchUIComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,11 +168,13 @@
 			children = (
 				4ADD55482C17310C0026BD08 /* MoviesFeed.strings */,
 				4ADD554B2C17312C0026BD08 /* Localized.swift */,
+				4ADD555D2C1763820026BD08 /* MoviesSearch */,
 				4ADD55182C16D1FC0026BD08 /* MoviesFeed */,
 				4ADD55152C16CBF60026BD08 /* Help */,
 				4ADD54C22C16C5CC0026BD08 /* AppDelegate.swift */,
 				4ADD54C42C16C5CC0026BD08 /* SceneDelegate.swift */,
 				4ADD554F2C1731FF0026BD08 /* MoviesFeedUIComposer.swift */,
+				4ADD55672C1765AD0026BD08 /* MoviesSearchUIComposer.swift */,
 				4ADD554D2C1731D40026BD08 /* MainQueueDispatchDecorator.swift */,
 				4ADD54C62C16C5CC0026BD08 /* ViewController.swift */,
 				4ADD54C82C16C5CC0026BD08 /* Main.storyboard */,
@@ -336,6 +346,40 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		4ADD555D2C1763820026BD08 /* MoviesSearch */ = {
+			isa = PBXGroup;
+			children = (
+				4ADD55602C1763B40026BD08 /* ViewModels */,
+				4ADD555F2C1763AA0026BD08 /* Controllers */,
+				4ADD555E2C1763A30026BD08 /* Views */,
+			);
+			path = MoviesSearch;
+			sourceTree = "<group>";
+		};
+		4ADD555E2C1763A30026BD08 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4ADD55612C1763D40026BD08 /* MoviesSearch.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4ADD555F2C1763AA0026BD08 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4ADD55632C1763FA0026BD08 /* MoviesSearchViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4ADD55602C1763B40026BD08 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4ADD55652C1764140026BD08 /* MoviesSearchViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -426,6 +470,7 @@
 				4ADD54FB2C16CAF80026BD08 /* CONTENTLISTINGPAGE-PAGE1.json in Resources */,
 				4ADD550F2C16CB410026BD08 /* poster1.jpg in Resources */,
 				4ADD55132C16CB410026BD08 /* poster9.jpg in Resources */,
+				4ADD55622C1763D40026BD08 /* MoviesSearch.storyboard in Resources */,
 				4ADD54CA2C16C5CC0026BD08 /* Base in Resources */,
 				4ADD554A2C17310C0026BD08 /* MoviesFeed.strings in Resources */,
 				4ADD55002C16CB1A0026BD08 /* TitilliumWeb-Regular.ttf in Resources */,
@@ -461,10 +506,12 @@
 				4ADD54C72C16C5CC0026BD08 /* ViewController.swift in Sources */,
 				4ADD55232C16D40F0026BD08 /* RemoteMockedMoviesFeedLoader.swift in Sources */,
 				4ADD55472C1730B20026BD08 /* MoviesFeedViewModel.swift in Sources */,
+				4ADD55682C1765AD0026BD08 /* MoviesSearchUIComposer.swift in Sources */,
 				4ADD55502C1731FF0026BD08 /* MoviesFeedUIComposer.swift in Sources */,
 				4ADD54C32C16C5CC0026BD08 /* AppDelegate.swift in Sources */,
 				4ADD551B2C16D2450026BD08 /* MoviesFeed.swift in Sources */,
 				4ADD55362C17300D0026BD08 /* UICollectionView+Dequeuing.swift in Sources */,
+				4ADD55642C1763FA0026BD08 /* MoviesSearchViewController.swift in Sources */,
 				4ADD552C2C16EDA50026BD08 /* MoviesFeedMapper.swift in Sources */,
 				4ADD554C2C17312C0026BD08 /* Localized.swift in Sources */,
 				4ADD54C52C16C5CC0026BD08 /* SceneDelegate.swift in Sources */,
@@ -475,6 +522,7 @@
 				4ADD554E2C1731D40026BD08 /* MainQueueDispatchDecorator.swift in Sources */,
 				4ADD55382C17300D0026BD08 /* UILabel+Extension.swift in Sources */,
 				4ADD552E2C170F760026BD08 /* JSONFileLoaderClient.swift in Sources */,
+				4ADD55662C1764140026BD08 /* MoviesSearchViewModel.swift in Sources */,
 				4ADD55432C1730930026BD08 /* MoviesFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

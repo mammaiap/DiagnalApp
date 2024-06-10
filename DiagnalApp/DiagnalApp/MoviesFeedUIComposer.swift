@@ -11,16 +11,20 @@ import UIKit
 final class MoviesFeedUIComposer{
     private init() {}
     
-    public static func moviesFeedComposedWith(feedLoader: MoviesFeedLoader) -> MoviesFeedViewController {
+    typealias SearchHandler = ([MoviesCard]) -> Void
+    
+    public static func moviesFeedComposedWith(feedLoader: MoviesFeedLoader,
+            onSearch: @escaping SearchHandler) -> MoviesFeedViewController {
+        
         let feedViewModel = MoviesFeedViewModel(
             feedLoader: MainQueueDispatchDecorator(decoratee: feedLoader))
         
         let feedViewController = MoviesFeedViewController.makeWith(
-            viewModel: feedViewModel)
+            viewModel: feedViewModel, onSearch: onSearch)
         
         feedViewModel.onFeedLoad = adaptFeedToCellControllers(
         forwardingTo: feedViewController)        
-        
+       
         return feedViewController
     }
     
@@ -32,16 +36,18 @@ final class MoviesFeedUIComposer{
             controller?.displayNewlyFetchedItems(newItems)
         }
     }
+    
 }
 
 private extension MoviesFeedViewController {
-    static func makeWith(viewModel: MoviesFeedViewModel) -> MoviesFeedViewController {
+    static func makeWith(viewModel: MoviesFeedViewModel,onSearch: @escaping ([MoviesCard]) -> Void) -> MoviesFeedViewController {
         let bundle = Bundle(for: MoviesFeedViewController.self)
         let storyboard = UIStoryboard(name: "MoviesFeed", bundle: bundle)
         let feedController = storyboard.instantiateInitialViewController{ coder in
             MoviesFeedViewController(viewModel: viewModel, coder: coder)
         }!
-        
+        feedController.onSearch = onSearch
         return feedController
     }
 }
+
