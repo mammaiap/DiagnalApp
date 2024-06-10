@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "34A75632-DDF9-4859-A998-62B7F495C6F2",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:DiagnalApp.xcodeproj",
+      "identifier" : "4ADD54BE2C16C5CC0026BD08",
+      "name" : "DiagnalApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:DiagnalApp.xcodeproj",
+        "identifier" : "4ADD54D42C16C5CD0026BD08",
+        "name" : "DiagnalAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}
