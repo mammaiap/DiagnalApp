@@ -29,6 +29,23 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
         XCTAssertEqual(client.requestedFileNames, [expectedFileName])
     }
     
+    func test_loadTwice_requestsDataFromFileNameTwice() {
+        
+        let request = makePagedMoviesRequest(pagedNum: 1)
+
+        let expectedFileName = "CONTENTLISTINGPAGE-PAGE" + "\(request.page)"
+        
+        let baseFileName = "CONTENTLISTINGPAGE-PAGE"
+        
+        let (sut, client) = makeSUT(baseFile: baseFileName)
+
+        sut.load(request) { _ in }
+        sut.load(request) { _ in }
+
+        XCTAssertEqual(client.requestedFileNames, [expectedFileName, expectedFileName])
+    }
+    
+    
     // MARK: - Helpers
     
     private func makeSUT(baseFile: String = "", file: StaticString = #file, line: UInt = #line) -> (sut: RemoteMockedMoviesFeedLoader,client: FileLoaderClientSpy) {
