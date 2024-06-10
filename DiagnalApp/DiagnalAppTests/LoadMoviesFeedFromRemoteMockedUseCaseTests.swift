@@ -74,6 +74,16 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
       })
     }
     
+    func test_load_delivers_movies_feed_on_success_response_with_items() {
+      let (sut, client) = makeSUT()
+        let items = Array(0..<2).map { index in makeMoviesCard(name: "name1",imagePath: "imagepath.jpg") }
+      let page = makeMoviesFeed(items: items, title: "title1")
+      let pageData = makeItemsJSONData(for: page.json)
+      expect(sut, toCompleteWith: .success(page.model), when: {
+          client.complete(withSuccess: pageData)
+      })
+    }
+    
     
     // MARK: - Helpers
     
