@@ -84,6 +84,17 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
       })
     }
     
+    func test_does_not_invoke_completion_once_instance_has_been_deallocated() {
+      let client = FileLoaderClientSpy()
+      var sut: MoviesFeedLoader? = RemoteMockedMoviesFeedLoader(baseFileName: getBaseFileName(), client: client)
+
+      var output: Any? = nil
+      sut?.load(.init(page: 1), completion: { output = $0 })
+      sut = nil
+      client.complete(withSuccess: makeData())     
+      XCTAssertNil(output)
+    }
+    
     
     // MARK: - Helpers
     
@@ -124,6 +135,10 @@ final class LoadMoviesFeedFromRemoteMockedUseCaseTests: XCTestCase {
         action()
         
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    func makeData(isEmpty: Bool = false) -> Data {
+      return isEmpty ? Data() : Data("any data".utf8)
     }
     
     private func makeItemsJSONData(for items: [String: Any]) -> Data {
