@@ -1,0 +1,11 @@
+/* 
+  MoviesFeed.strings
+  DiagnalApp
+
+  Created by Muthulingam on 10/06/24.
+  
+*/
+
+"text.feed.error.title" = "Error";
+"text.feed.load.error" = "Couldn't load the JSON file";
+"text.feed.error.ok" = "OK";

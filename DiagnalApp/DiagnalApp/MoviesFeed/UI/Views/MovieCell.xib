@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="TitilliumWeb-Light.ttf">
+            <string>TitilliumWeb-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCell" id="gTV-IL-0wX" customClass="MovieCell" customModule="DiagnalApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="249"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="163" height="249"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c0A-X1-yAQ">
+                        <rect key="frame" x="0.0" y="0.0" width="163" height="199.33333333333334"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                <integer key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTO-JI-pE9">
+                        <rect key="frame" x="0.0" y="207.33333333333334" width="163" height="41.666666666666657"/>
+                        <fontDescription key="fontDescription" name="TitilliumWeb-Light" family="Titillium Web" pointSize="18"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9YM-Xx-0Re" userLabel="Loading Label">
+                        <rect key="frame" x="0.0" y="0.0" width="163" height="199.33333333333334"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="9YM-Xx-0Re" firstAttribute="trailing" secondItem="c0A-X1-yAQ" secondAttribute="trailing" id="5tV-pp-Yju"/>
+                <constraint firstItem="c0A-X1-yAQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FsZ-dH-QtQ"/>
+                <constraint firstItem="ZTO-JI-pE9" firstAttribute="top" secondItem="c0A-X1-yAQ" secondAttribute="bottom" constant="8" symbolic="YES" id="G8o-FO-eDZ"/>
+                <constraint firstItem="c0A-X1-yAQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="LWf-JZ-U9x"/>
+                <constraint firstItem="ZTO-JI-pE9" firstAttribute="width" relation="greaterThanOrEqual" secondItem="c0A-X1-yAQ" secondAttribute="width" id="Vuy-4i-YrN"/>
+                <constraint firstItem="ZTO-JI-pE9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ZnT-Ej-r02"/>
+                <constraint firstAttribute="trailing" secondItem="c0A-X1-yAQ" secondAttribute="trailing" id="h4A-x6-kkm"/>
+                <constraint firstItem="9YM-Xx-0Re" firstAttribute="leading" secondItem="c0A-X1-yAQ" secondAttribute="leading" id="leC-hz-VSc"/>
+                <constraint firstItem="9YM-Xx-0Re" firstAttribute="bottom" secondItem="c0A-X1-yAQ" secondAttribute="bottom" id="mlp-pA-mwz"/>
+                <constraint firstItem="c0A-X1-yAQ" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.8" id="p6f-VA-7w3"/>
+                <constraint firstAttribute="bottom" secondItem="ZTO-JI-pE9" secondAttribute="bottom" id="rfA-2f-WFO"/>
+                <constraint firstItem="9YM-Xx-0Re" firstAttribute="top" secondItem="c0A-X1-yAQ" secondAttribute="top" id="x0A-dV-FVV"/>
+            </constraints>
+            <size key="customSize" width="163" height="249"/>
+            <connections>
+                <outlet property="imgMoviePoster" destination="c0A-X1-yAQ" id="uce-Jo-gel"/>
+                <outlet property="lblMovieName" destination="ZTO-JI-pE9" id="2XL-aX-CRR"/>
+            </connections>
+            <point key="canvasLocation" x="193.12977099236642" y="88.380281690140848"/>
+        </collectionViewCell>
+    </objects>
+</document>
