@@ -29,6 +29,7 @@
 		4ADD55122C16CB410026BD08 /* poster7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD55082C16CB410026BD08 /* poster7.jpg */; };
 		4ADD55132C16CB410026BD08 /* poster9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD55092C16CB410026BD08 /* poster9.jpg */; };
 		4ADD55142C16CB410026BD08 /* poster3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD550A2C16CB410026BD08 /* poster3.jpg */; };
+		4ADD55172C16CC1A0026BD08 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD55162C16CC1A0026BD08 /* UIFont+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		4ADD55082C16CB410026BD08 /* poster7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poster7.jpg; sourceTree = "<group>"; };
 		4ADD55092C16CB410026BD08 /* poster9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poster9.jpg; sourceTree = "<group>"; };
 		4ADD550A2C16CB410026BD08 /* poster3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poster3.jpg; sourceTree = "<group>"; };
+		4ADD55162C16CC1A0026BD08 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		4ADD54C12C16C5CC0026BD08 /* DiagnalApp */ = {
 			isa = PBXGroup;
 			children = (
+				4ADD55152C16CBF60026BD08 /* Help */,
 				4ADD54C22C16C5CC0026BD08 /* AppDelegate.swift */,
 				4ADD54C42C16C5CC0026BD08 /* SceneDelegate.swift */,
 				4ADD54C62C16C5CC0026BD08 /* ViewController.swift */,
@@ -174,6 +177,14 @@
 				4ADD55092C16CB410026BD08 /* poster9.jpg */,
 			);
 			path = PosterImages;
+			sourceTree = "<group>";
+		};
+		4ADD55152C16CBF60026BD08 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				4ADD55162C16CC1A0026BD08 /* UIFont+Ext.swift */,
+			);
+			path = Help;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ADD55172C16CC1A0026BD08 /* UIFont+Ext.swift in Sources */,
 				4ADD54C72C16C5CC0026BD08 /* ViewController.swift in Sources */,
 				4ADD54C32C16C5CC0026BD08 /* AppDelegate.swift in Sources */,
 				4ADD54C52C16C5CC0026BD08 /* SceneDelegate.swift in Sources */,
