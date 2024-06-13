@@ -31,7 +31,7 @@ final class MoviesFeedUIComposer{
     private static func adaptFeedToCellControllers(forwardingTo controller: MoviesFeedViewController) -> (MoviesFeed) -> Void {
         return { [weak controller] feed in
             let newItems = feed.items.map { model in
-                MoviesCellController(viewModel: MoviesCellViewModel(model: model))
+                MoviesCellController(id: model,viewModel: MoviesCellViewModel(model: model))
             }
             controller?.displayNewlyFetchedItems(newItems)
         }

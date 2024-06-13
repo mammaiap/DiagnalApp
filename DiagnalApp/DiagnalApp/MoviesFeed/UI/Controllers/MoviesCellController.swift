@@ -2,7 +2,7 @@
 //  MoviesCellController.swift
 //  DiagnalApp
 //
-//  Created by Muthulingam on 10/06/24.
+//  Created by Muthulingam on 09/06/24.
 //
 
 import Foundation
@@ -10,10 +10,12 @@ import UIKit
 
 final class MoviesCellController: Hashable, Equatable {
     
+    private let id: AnyHashable
     private let viewModel: MoviesCellViewModel
     private var cell: MovieCell?
     
-    init(viewModel: MoviesCellViewModel) {
+    init(id: AnyHashable, viewModel: MoviesCellViewModel) {
+        self.id = id
         self.viewModel = viewModel
     }
     
@@ -27,7 +29,7 @@ final class MoviesCellController: Hashable, Equatable {
     }
     
     func preload() {
-      // if any heavy prefetching is required here we can do that.. like thumbnail fetching with remote API.. 
+      // if any heavy prefetching is required here we can do that.. like thumbnail fetching with remote API..
     }
 
     func cancelLoad() {
@@ -40,7 +42,7 @@ final class MoviesCellController: Hashable, Equatable {
         cell.lblMovieName.text = viewModel.name
         if cell.lblMovieName.isTruncated {
             cell.lblMovieName.startMarqueeAnimation()
-        } else {           
+        } else {
             cell.lblMovieName.stopMarqueeAnimation()
         }
         cell.imgMoviePoster.setImageAnimated(UIImage(named: viewModel.posterImageFileName))
@@ -53,11 +55,11 @@ final class MoviesCellController: Hashable, Equatable {
     }
     
     static func == (lhs: MoviesCellController, rhs: MoviesCellController) -> Bool {
-        lhs.viewModel.name == rhs.viewModel.name
+        lhs.id == rhs.id
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(viewModel.name)
+        hasher.combine(id)
     }
     
     

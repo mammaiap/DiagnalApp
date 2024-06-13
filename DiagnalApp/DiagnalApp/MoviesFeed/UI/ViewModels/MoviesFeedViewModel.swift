@@ -2,7 +2,7 @@
 //  MoviesFeedViewModel.swift
 //  DiagnalApp
 //
-//  Created by Muthulingam on 10/06/24.
+//  Created by Muthulingam on 09/06/24.
 //
 
 import Foundation
@@ -14,15 +14,14 @@ final class MoviesFeedViewModel{
     var onFeedLoad: Observer<MoviesFeed>?
     var onErrorStateChange: Observer<String?>?
     
-    private var currentPageNum: Int = 1
     
-    private var maxPageNum: Int = 3
+    private var pageNum: Int = 1
     
     var hasMoreData: Bool = true
     
     var feedViewtitle: String = ""
     
-    var cacheFeeds: [Int: MoviesFeed] = [ : ]   
+    var cacheFeeds: [Int: MoviesFeed] = [ : ]
     
     private let feedLoader: MoviesFeedLoader
 
@@ -30,6 +29,39 @@ final class MoviesFeedViewModel{
         self.feedLoader = feedLoader
     }
     
+}
+
+
+
+extension MoviesFeedViewModel{
+    
+    func loadFeed(page: Int = 1) {
+        if(self.hasMoreData){
+            self.pageNum = page
+            if let cacheFeed = cacheFeeds[page] {
+                self.onFeedLoad?(cacheFeed)
+                self.onLoadingStateChange?(false)
+                return
+            }
+            onErrorStateChange?(.none)
+            onLoadingStateChange?(true)
+            
+            feedLoader.load(.init(page: page)) { [weak self] result in
+                guard let self = self else { return }
+                if let feed = try? result.get() {
+                    self.feedViewtitle = feed.title
+                    self.hasMoreData = feed.pageSize >= 20
+                    cacheFeeds[page] = feed
+                    self.onFeedLoad?(feed)
+                } else {
+                    self.onErrorStateChange?(Localized.MoviesFeed.loadError)
+                }
+                self.onLoadingStateChange?(false)
+            }
+        }else{
+            self.onLoadingStateChange?(false)
+        }
+    }
 }
 
 extension MoviesFeedViewModel{
@@ -42,39 +74,23 @@ extension MoviesFeedViewModel{
         }
         return allMovies
     }
-}
-
-extension MoviesFeedViewModel{
     
-    func loadFeed() {
-        if(self.currentPageNum <= maxPageNum){
-            if let cacheFeed = cacheFeeds[self.currentPageNum] {
-                self.onFeedLoad?(cacheFeed)
-                if self.hasMoreData {
-                    self.currentPageNum += 1
-                }
-                self.onLoadingStateChange?(false)
-                
-            }
-            onErrorStateChange?(.none)
-            onLoadingStateChange?(true)
-            
-            feedLoader.load(.init(page: currentPageNum)) { [weak self] result in
-                guard let self = self else { return }
-                if let feed = try? result.get() {                                   
-                    self.feedViewtitle = feed.title
-                    self.hasMoreData = feed.pageSize >= 20
-                    if self.hasMoreData {
-                        self.currentPageNum += 1
-                    }
-                    cacheFeeds[self.currentPageNum] = feed
-                    self.onFeedLoad?(feed)
-                    
-                } else {
-                    self.onErrorStateChange?(Localized.MoviesFeed.loadError)
-                }
-                self.onLoadingStateChange?(false)
-            }
+    var isFirstPage: Bool{
+        if pageNum == 1{
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    var nextPage: Int?{
+        if hasMoreData{
+            return pageNum + 1
+        }else{
+            return nil
         }
     }
 }
+
+
+

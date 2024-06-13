@@ -25,9 +25,10 @@ final class MoviesSearchUIComposer{
     
     private static func adaptSearchMoviesToCellControllers(forwardingTo controller: MoviesSearchViewController) -> ([MoviesCard]) -> Void {
         return { [weak controller] items in
-            controller?.filteredCollectionModel = items.map { model in
-                MoviesCellController(viewModel: MoviesCellViewModel(model: model))
-            }            
+            let newItems = items.map { model in
+                MoviesCellController(id: model,viewModel: MoviesCellViewModel(model: model))
+            }
+            controller?.set(newItems)
         }
     }
     

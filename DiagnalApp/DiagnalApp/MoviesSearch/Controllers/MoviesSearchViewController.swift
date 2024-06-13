@@ -27,12 +27,24 @@ class MoviesSearchViewController: UIViewController {
         fatalError("Invalid way of decoding this class")
     }
     
-    var filteredCollectionModel = [MoviesCellController](){
-        didSet {
-            cvMovieListing.reloadData()
-        }
+    func set(_ newItems: [MoviesCellController]) {
+      var snapshot = NSDiffableDataSourceSnapshot<Int, MoviesCellController>()
+      snapshot.appendSections([0])
+      snapshot.appendItems(newItems, toSection: 0)
+      dataSource.apply(snapshot, animatingDifferences: false)
     }
     
+    func append(_ newItems: [MoviesCellController]) {
+      var snapshot = dataSource.snapshot()
+      snapshot.appendItems(newItems, toSection: 0)
+      dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+    private lazy var dataSource: UICollectionViewDiffableDataSource<Int, MoviesCellController> = {
+        .init(collectionView: cvMovieListing) { collectionView, indexPath, controller in
+          controller.view(in: collectionView, for: indexPath)
+        }
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +54,7 @@ class MoviesSearchViewController: UIViewController {
     
     private func setupUI() {
         cvMovieListing.delegate = self
-        cvMovieListing.dataSource = self
+        cvMovieListing.dataSource = dataSource
         cvMovieListing.register(UINib(nibName: MovieCell.cellID, bundle: nil), forCellWithReuseIdentifier: MovieCell.cellID)
         txtSearch.delegate = self
         searching(isStart: true)
@@ -53,7 +65,7 @@ class MoviesSearchViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func btnBackTap(_ sender: UIButton) {
-        // pop to MoviesFeedViewController
+        
         searching(isStart: false)
         self.navigationController?.popViewController(animated: true)
     }
@@ -80,26 +92,40 @@ extension MoviesSearchViewController{
     }
 }
 
-extension MoviesSearchViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+extension MoviesSearchViewController: UICollectionViewDelegate{
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filteredCollectionModel.count
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cellController(forRowAt: indexPath)?.preload()
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        return cellController(forRowAt: indexPath).view(in: collectionView, for: indexPath)
-    }    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cancelCellControllerLoad(forRowAt: indexPath)
+    }
     
 }
 
+extension MoviesSearchViewController: UICollectionViewDataSourcePrefetching{
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach { indexPath in
+            cellController(forRowAt: indexPath)?.preload()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach(cancelCellControllerLoad)
+    }
+    
+}
+
+
 private extension MoviesSearchViewController{
-    private func cellController(forRowAt indexPath: IndexPath) -> MoviesCellController {
-        return filteredCollectionModel[indexPath.row]
-        
+    private func cellController(forRowAt indexPath: IndexPath) -> MoviesCellController? {
+        let controller = dataSource.itemIdentifier(for: indexPath)
+        return controller
     }
 
     private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
-        cellController(forRowAt: indexPath).cancelLoad()
+        cellController(forRowAt: indexPath)?.cancelLoad()
     }
     
 }
@@ -139,19 +165,7 @@ extension MoviesSearchViewController: UICollectionViewDelegateFlowLayout {
 
 private extension MoviesSearchViewController{
     func searching(isStart: Bool) {
-
-        UIView.animate(withDuration: 0.5,
-                       delay: 0,
-                       usingSpringWithDamping: 0.8,
-                       initialSpringVelocity: 0.5,
-                       options: [.curveEaseInOut, .beginFromCurrentState],
-                       animations: {
-            
-            self.txtSearch.isHidden = !isStart
-            
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-        
+        self.txtSearch.isHidden = !isStart
         _ = isStart ? txtSearch.becomeFirstResponder() : txtSearch.resignFirstResponder()
         
         txtSearch.text = ""
@@ -165,6 +179,6 @@ extension MoviesSearchViewController: UISearchBarDelegate {
         if searchText.count >= 2 {
             isSearching = true
             viewModel.searchMovies(searchText)
-        }        
+        }
     }
 }

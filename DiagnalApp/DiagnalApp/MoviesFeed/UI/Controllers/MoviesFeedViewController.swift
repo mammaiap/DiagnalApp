@@ -2,7 +2,7 @@
 //  MoviesFeedViewController.swift
 //  DiagnalApp
 //
-//  Created by Muthulingam on 10/06/24.
+//  Created by Muthulingam on 09/06/24.
 //
 
 import Foundation
@@ -14,12 +14,11 @@ class MoviesFeedViewController: UIViewController {
     @IBOutlet private(set) var lblTitle: UILabel!
     @IBOutlet private(set) var btnBack: UIButton!
     @IBOutlet private(set) var btnSearch: UIButton!
-    @IBOutlet weak var vwLoading: UIView!
+    @IBOutlet private(set) var vwLoading: UIView!
    
     
     private var isViewAppeared: Bool = false
-    private var isLoadingMore: Bool = false
-    
+    private var isUIReadyForLoadMore: Bool = true
     var onSearch: ([MoviesCard]) -> Void = { _ in }
     
     private var viewModel: MoviesFeedViewModel
@@ -35,7 +34,26 @@ class MoviesFeedViewController: UIViewController {
         fatalError("Invalid way of decoding this class")
     }
     
-    var collectionModel = [MoviesCellController]()
+    func set(_ newItems: [MoviesCellController]) {
+      var snapshot = NSDiffableDataSourceSnapshot<Int, MoviesCellController>()
+      snapshot.appendSections([0])
+      snapshot.appendItems(newItems, toSection: 0)
+      dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    func append(_ newItems: [MoviesCellController]) {
+      var snapshot = dataSource.snapshot()
+      snapshot.appendItems(newItems, toSection: 0)
+      dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+    private lazy var dataSource: UICollectionViewDiffableDataSource<Int, MoviesCellController> = {
+        .init(collectionView: cvMovieListing) { collectionView, indexPath, controller in
+          controller.view(in: collectionView, for: indexPath)
+        }
+    }()
+    
+   
    
     
     override func viewDidLoad() {
@@ -54,12 +72,12 @@ class MoviesFeedViewController: UIViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        // This will reset flow layout and reload collection view
+        
         cvMovieListing.collectionViewLayout.invalidateLayout()
         cvMovieListing.reloadData()
     }
     
-    private func refresh(){
+    private func refresh() {
         viewModel.loadFeed()
     }
     
@@ -69,9 +87,8 @@ class MoviesFeedViewController: UIViewController {
     
     private func setupUI() {
         cvMovieListing.delegate = self
-        cvMovieListing.dataSource = self
+        cvMovieListing.dataSource = dataSource
         cvMovieListing.register(UINib(nibName: MovieCell.cellID, bundle: nil), forCellWithReuseIdentifier: MovieCell.cellID)
-       
         
         cvMovieListing.refreshControl = UIRefreshControl()
         cvMovieListing.refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
@@ -127,18 +144,10 @@ extension MoviesFeedViewController{
     }
 }
 
-extension MoviesFeedViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionModel.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        return cellController(forRowAt: indexPath).view(in: collectionView, for: indexPath)
-    }
+extension MoviesFeedViewController: UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        cellController(forRowAt: indexPath).preload()
+        cellController(forRowAt: indexPath)?.preload()
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -150,7 +159,7 @@ extension MoviesFeedViewController: UICollectionViewDelegate, UICollectionViewDa
 extension MoviesFeedViewController: UICollectionViewDataSourcePrefetching{
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
-            cellController(forRowAt: indexPath).preload()
+            cellController(forRowAt: indexPath)?.preload()
         }
     }
     
@@ -167,8 +176,8 @@ extension MoviesFeedViewController: UIScrollViewDelegate {
       let offsetY = scrollView.contentOffset.y
       let contentHeight = scrollView.contentSize.height
       if (offsetY > contentHeight - scrollView.frame.height) {
-          if(!isLoadingMore && viewModel.hasMoreData){
-              isLoadingMore = true
+          if(viewModel.hasMoreData && self.isUIReadyForLoadMore){
+              self.isUIReadyForLoadMore = false
               self.fetchMoreItemsToDisplay()
           }
       }
@@ -176,13 +185,13 @@ extension MoviesFeedViewController: UIScrollViewDelegate {
 }
 
 private extension MoviesFeedViewController{
-    private func cellController(forRowAt indexPath: IndexPath) -> MoviesCellController {
-        return collectionModel[indexPath.row]
-        
+    private func cellController(forRowAt indexPath: IndexPath) -> MoviesCellController? {
+        let controller = dataSource.itemIdentifier(for: indexPath)
+        return controller
     }
 
     private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
-        cellController(forRowAt: indexPath).cancelLoad()
+        cellController(forRowAt: indexPath)?.cancelLoad()
     }
     
 }
@@ -222,18 +231,24 @@ extension MoviesFeedViewController: UICollectionViewDelegateFlowLayout {
 
 extension MoviesFeedViewController{
     func displayNewlyFetchedItems(_ newItems: [MoviesCellController]){
-        if(collectionModel.isEmpty){
-            self.appendItems(newItems)
+        
+        if(viewModel.isFirstPage){
+            set(newItems)
         }else{
-            self.insertItems(newItems)
+            append(newItems)
         }
+        self.hideSpinnerView()
+        self.isUIReadyForLoadMore = true
     }
 }
 
 private extension MoviesFeedViewController{
     private func fetchMoreItemsToDisplay(){
-        showSpinnerView()
-        refresh()
+        if viewModel.hasMoreData,let nextPage = viewModel.nextPage{
+            showSpinnerView()
+            viewModel.loadFeed(page: nextPage)
+        }
+        
     }
     
     private func showSpinnerView(){
@@ -244,37 +259,7 @@ private extension MoviesFeedViewController{
     private func hideSpinnerView(){
         vwLoading.isHidden = true
     }
-    
-    private func appendItems(_ newItems: [MoviesCellController]){
-        collectionModel.append(contentsOf: newItems)
-        cvMovieListing.reloadData()
-        isLoadingMore = false
-    }
-    
-    private func insertItems(_ newItems: [MoviesCellController]){
-        if(!newItems.isEmpty){
-            let updatedCollections = newItems
-            
-            var insIndices = [IndexPath]()
-            
-            for item in 0..<updatedCollections.count {
-                let indexPath = IndexPath(row: (item + self.collectionModel.count), section: 0)
-                insIndices.append(indexPath)
-            }
-
-            self.collectionModel.append(contentsOf: updatedCollections)
-            
-            self.cvMovieListing?.performBatchUpdates({
-                if(!insIndices.isEmpty){
-                    self.cvMovieListing?.insertItems(at: insIndices)
-                }
-            }, completion: { [weak self]  _ in
-                guard let self = self else { return }
-                self.hideSpinnerView()
-            })
-            isLoadingMore = false
-        }
-    }
+   
 }
 
 
