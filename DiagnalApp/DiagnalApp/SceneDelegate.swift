@@ -17,6 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             JSONFileLoaderClient()
         }()
     
+    private lazy var searchClient: MoviesSearchLoaderClient = {
+            MoviesSearchLoaderClientImp()
+        }()
+    
     private lazy var navigationController = UINavigationController(rootViewController: makeAndShowMoviesFeedScene())
 
     convenience init(client: FileLoaderClient) {
@@ -27,9 +31,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-       
-        guard let _ = (scene as? UIWindowScene) else { return }
         //UIFont.loadCustomFonts
+        guard let _ = (scene as? UIWindowScene) else { return }
+        
         configureWindow()
     }
     
@@ -49,7 +53,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func showSearchMoviesScene(for allMovies: [MoviesCard]) {
         
-        let searchController = MoviesSearchUIComposer.moviesSearchComposedWith(allmovieCards: allMovies)
+        let filterLoader = MoviesFilterLoader(inputMovies: allMovies, client: searchClient)
+        
+        let searchController = MoviesSearchUIComposer.moviesSearchComposedWith(searchLoader: filterLoader)
         
         DispatchQueue.main.async{
             self.navigationController.pushViewController(searchController, animated: true)

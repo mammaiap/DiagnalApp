@@ -6,6 +6,7 @@
   
 */
 
+"text.feed.view.title" = "Romantic Comedy";
 "text.feed.error.title" = "Error";
 "text.feed.load.error" = "Couldn't load the JSON file";
 "text.feed.error.ok" = "OK";

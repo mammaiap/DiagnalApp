@@ -11,9 +11,9 @@ import UIKit
 final class MoviesSearchUIComposer{
     private init() {}
     
-    public static func moviesSearchComposedWith(allmovieCards: [MoviesCard]) -> MoviesSearchViewController {
+    public static func moviesSearchComposedWith(searchLoader: MoviesSearchLoader) -> MoviesSearchViewController {
         
-        let searchViewModel = MoviesSearchViewModel(allMovies: allmovieCards)
+        let searchViewModel = MoviesSearchViewModel(searchLoader: searchLoader)
         
         let searchViewController = MoviesSearchViewController.makeWith(viewModel: searchViewModel)
         

@@ -175,10 +175,16 @@ private extension MoviesSearchViewController{
 
 extension MoviesSearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        if searchText.count >= 2 {
+        if searchText.count >= 2{
             isSearching = true
-            viewModel.searchMovies(searchText)
+            searchMovies(searchText)
         }
+        
+    }
+}
+
+extension MoviesSearchViewController{
+    func searchMovies(_ searchText: String){
+        viewModel.searchMovies(searchText)
     }
 }

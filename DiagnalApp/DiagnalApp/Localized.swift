@@ -16,6 +16,14 @@ final class Localized {
 extension Localized {
     enum MoviesFeed {
         static var table: String { "MoviesFeed" }
+        
+        static var viewTitle: String {
+            NSLocalizedString(
+                "text.feed.view.title",
+                tableName: table,
+                bundle: bundle,
+                comment: "feed view title")
+        }
 
         static var loadError: String {
             NSLocalizedString(

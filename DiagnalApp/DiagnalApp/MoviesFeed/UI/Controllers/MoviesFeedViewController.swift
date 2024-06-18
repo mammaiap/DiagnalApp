@@ -60,6 +60,7 @@ class MoviesFeedViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         bind()
+        
     }
     
     override func viewIsAppearing(_ animated: Bool) {
@@ -77,13 +78,9 @@ class MoviesFeedViewController: UIViewController {
         cvMovieListing.reloadData()
     }
     
-    private func refresh() {
+    @objc private func refresh() {
         viewModel.loadFeed()
-    }
-    
-    @objc private func pullToRefresh(_ sender: Any) {
-        refresh()
-    }
+    }   
     
     private func setupUI() {
         cvMovieListing.delegate = self
@@ -91,7 +88,7 @@ class MoviesFeedViewController: UIViewController {
         cvMovieListing.register(UINib(nibName: MovieCell.cellID, bundle: nil), forCellWithReuseIdentifier: MovieCell.cellID)
         
         cvMovieListing.refreshControl = UIRefreshControl()
-        cvMovieListing.refreshControl?.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
+        cvMovieListing.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.toolbar.isHidden = true
         hideSpinnerView()
@@ -145,6 +142,11 @@ extension MoviesFeedViewController{
 }
 
 extension MoviesFeedViewController: UICollectionViewDelegate{
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+      guard cvMovieListing.refreshControl?.isRefreshing == true else { return }
+        refresh()
+    }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         cellController(forRowAt: indexPath)?.preload()

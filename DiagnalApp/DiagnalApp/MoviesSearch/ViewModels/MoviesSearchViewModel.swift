@@ -14,34 +14,35 @@ final class MoviesSearchViewModel{
     var onErrorStateChange: Observer<String?>?
     var onSearchLoad: Observer<[MoviesCard]>?
     
-    private let allMovies: [MoviesCard]
+    private let searchLoader: MoviesSearchLoader
     
-    init(allMovies: [MoviesCard]) {
-        self.allMovies = allMovies
+    init(searchLoader: MoviesSearchLoader){
+        self.searchLoader = searchLoader
     }
-    
-    
+       
 }
 
 extension MoviesSearchViewModel{
-   
+    
     func searchMovies(_ searchText: String){
-      
+        
         onErrorStateChange?(.none)
         
-        if searchText.count >= 2 {
-            let filteredMovies = allMovies.filter( {$0.name.localizedCaseInsensitiveContains(searchText)})
+        searchLoader.searchMovies(searchText: searchText) { [weak self] result in
+            guard let self = self else { return }
             
-            if !(filteredMovies.isEmpty) {
-                self.onSearchLoad?(filteredMovies)
+            if let filtered = try? result.get(){
                 
-            }else {
+                self.onSearchLoad?(filtered)
+                
+            }else{
                 self.onErrorStateChange?(Localized.MoviesFeed.searchNotFoundError)
             }
             
         }
         
-        
     }
+   
+   
     
 }

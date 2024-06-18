@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A047B4F2C21C682007F0933 /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A047B4E2C21C682007F0933 /* SceneDelegateTests.swift */; };
+		4A6659472C1EF9ED001B3C68 /* MoviesFeedViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6659462C1EF9ED001B3C68 /* MoviesFeedViewController+Ext.swift */; };
+		4A6659492C1F141E001B3C68 /* UIControl+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6659482C1F141E001B3C68 /* UIControl+Ext.swift */; };
+		4A66594B2C1F1441001B3C68 /* UIRefreshControl+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A66594A2C1F1441001B3C68 /* UIRefreshControl+Ext.swift */; };
+		4A7081B42C1ECBC50047B1ED /* MoviesFeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7081B32C1ECBC50047B1ED /* MoviesFeedViewControllerTests.swift */; };
+		4A913E012C2003DF00A5D85E /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A913E002C2003DF00A5D85E /* UIButton+Ext.swift */; };
+		4A913E032C2048AF00A5D85E /* MoviesSearchViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A913E022C2048AF00A5D85E /* MoviesSearchViewControllerTests.swift */; };
+		4A913E052C204B8F00A5D85E /* MoviesSearchViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A913E042C204B8F00A5D85E /* MoviesSearchViewController+Ext.swift */; };
+		4A913E082C20552B00A5D85E /* MoviesSearchLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A913E072C20552B00A5D85E /* MoviesSearchLoader.swift */; };
+		4A913E0A2C20562B00A5D85E /* MoviesFilterLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A913E092C20562B00A5D85E /* MoviesFilterLoader.swift */; };
+		4A913E0E2C20879600A5D85E /* MoviesFilterLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A913E0D2C20879600A5D85E /* MoviesFilterLoaderTests.swift */; };
+		4A913E102C2096A500A5D85E /* MoviesSearchLoaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A913E0F2C2096A500A5D85E /* MoviesSearchLoaderClient.swift */; };
+		4A913E122C209F4200A5D85E /* MoviesSearchLoaderClientImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A913E112C209F4200A5D85E /* MoviesSearchLoaderClientImp.swift */; };
 		4ADD54C32C16C5CC0026BD08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD54C22C16C5CC0026BD08 /* AppDelegate.swift */; };
 		4ADD54C52C16C5CC0026BD08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD54C42C16C5CC0026BD08 /* SceneDelegate.swift */; };
 		4ADD54C72C16C5CC0026BD08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD54C62C16C5CC0026BD08 /* ViewController.swift */; };
@@ -70,6 +83,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A047B4E2C21C682007F0933 /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
+		4A6659462C1EF9ED001B3C68 /* MoviesFeedViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoviesFeedViewController+Ext.swift"; sourceTree = "<group>"; };
+		4A6659482C1F141E001B3C68 /* UIControl+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Ext.swift"; sourceTree = "<group>"; };
+		4A66594A2C1F1441001B3C68 /* UIRefreshControl+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+Ext.swift"; sourceTree = "<group>"; };
+		4A7081B32C1ECBC50047B1ED /* MoviesFeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesFeedViewControllerTests.swift; sourceTree = "<group>"; };
+		4A913E002C2003DF00A5D85E /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
+		4A913E022C2048AF00A5D85E /* MoviesSearchViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSearchViewControllerTests.swift; sourceTree = "<group>"; };
+		4A913E042C204B8F00A5D85E /* MoviesSearchViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoviesSearchViewController+Ext.swift"; sourceTree = "<group>"; };
+		4A913E072C20552B00A5D85E /* MoviesSearchLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSearchLoader.swift; sourceTree = "<group>"; };
+		4A913E092C20562B00A5D85E /* MoviesFilterLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesFilterLoader.swift; sourceTree = "<group>"; };
+		4A913E0D2C20879600A5D85E /* MoviesFilterLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesFilterLoaderTests.swift; sourceTree = "<group>"; };
+		4A913E0F2C2096A500A5D85E /* MoviesSearchLoaderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSearchLoaderClient.swift; sourceTree = "<group>"; };
+		4A913E112C209F4200A5D85E /* MoviesSearchLoaderClientImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSearchLoaderClientImp.swift; sourceTree = "<group>"; };
 		4ADD54BF2C16C5CC0026BD08 /* DiagnalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiagnalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ADD54C22C16C5CC0026BD08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ADD54C42C16C5CC0026BD08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +170,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A913E062C2054F400A5D85E /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				4A913E112C209F4200A5D85E /* MoviesSearchLoaderClientImp.swift */,
+				4A913E0F2C2096A500A5D85E /* MoviesSearchLoaderClient.swift */,
+				4A913E092C20562B00A5D85E /* MoviesFilterLoader.swift */,
+				4A913E072C20552B00A5D85E /* MoviesSearchLoader.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
 		4ADD54B62C16C5CC0026BD08 = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +229,10 @@
 				4ADD55262C16D5C10026BD08 /* Helpers */,
 				4ADD54D92C16C5CD0026BD08 /* DiagnalAppTests.swift */,
 				4ADD55242C16D53B0026BD08 /* LoadMoviesFeedFromRemoteMockedUseCaseTests.swift */,
+				4A7081B32C1ECBC50047B1ED /* MoviesFeedViewControllerTests.swift */,
+				4A913E022C2048AF00A5D85E /* MoviesSearchViewControllerTests.swift */,
+				4A913E0D2C20879600A5D85E /* MoviesFilterLoaderTests.swift */,
+				4A047B4E2C21C682007F0933 /* SceneDelegateTests.swift */,
 			);
 			path = DiagnalAppTests;
 			sourceTree = "<group>";
@@ -293,6 +334,11 @@
 			children = (
 				4ADD55272C16D5ED0026BD08 /* XCTestCase+MemoryLeakTracking.swift */,
 				4ADD55292C16D62C0026BD08 /* FileLoaderClientSpy.swift */,
+				4A6659462C1EF9ED001B3C68 /* MoviesFeedViewController+Ext.swift */,
+				4A913E042C204B8F00A5D85E /* MoviesSearchViewController+Ext.swift */,
+				4A6659482C1F141E001B3C68 /* UIControl+Ext.swift */,
+				4A913E002C2003DF00A5D85E /* UIButton+Ext.swift */,
+				4A66594A2C1F1441001B3C68 /* UIRefreshControl+Ext.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -349,6 +395,7 @@
 		4ADD555D2C1763820026BD08 /* MoviesSearch */ = {
 			isa = PBXGroup;
 			children = (
+				4A913E062C2054F400A5D85E /* Feature */,
 				4ADD55602C1763B40026BD08 /* ViewModels */,
 				4ADD555F2C1763AA0026BD08 /* Controllers */,
 				4ADD555E2C1763A30026BD08 /* Views */,
@@ -503,9 +550,11 @@
 				4ADD553D2C1730610026BD08 /* MovieCell.swift in Sources */,
 				4ADD55422C1730930026BD08 /* MoviesCellController.swift in Sources */,
 				4ADD55172C16CC1A0026BD08 /* UIFont+Ext.swift in Sources */,
+				4A913E122C209F4200A5D85E /* MoviesSearchLoaderClientImp.swift in Sources */,
 				4ADD54C72C16C5CC0026BD08 /* ViewController.swift in Sources */,
 				4ADD55232C16D40F0026BD08 /* RemoteMockedMoviesFeedLoader.swift in Sources */,
 				4ADD55472C1730B20026BD08 /* MoviesFeedViewModel.swift in Sources */,
+				4A913E082C20552B00A5D85E /* MoviesSearchLoader.swift in Sources */,
 				4ADD55682C1765AD0026BD08 /* MoviesSearchUIComposer.swift in Sources */,
 				4ADD55502C1731FF0026BD08 /* MoviesFeedUIComposer.swift in Sources */,
 				4ADD54C32C16C5CC0026BD08 /* AppDelegate.swift in Sources */,
@@ -514,10 +563,12 @@
 				4ADD55642C1763FA0026BD08 /* MoviesSearchViewController.swift in Sources */,
 				4ADD552C2C16EDA50026BD08 /* MoviesFeedMapper.swift in Sources */,
 				4ADD554C2C17312C0026BD08 /* Localized.swift in Sources */,
+				4A913E102C2096A500A5D85E /* MoviesSearchLoaderClient.swift in Sources */,
 				4ADD54C52C16C5CC0026BD08 /* SceneDelegate.swift in Sources */,
 				4ADD55202C16D3590026BD08 /* FileLoaderClient.swift in Sources */,
 				4ADD55372C17300D0026BD08 /* UIImageView+Animations.swift in Sources */,
 				4ADD551D2C16D2A70026BD08 /* MoviesFeedLoader.swift in Sources */,
+				4A913E0A2C20562B00A5D85E /* MoviesFilterLoader.swift in Sources */,
 				4ADD55462C1730B20026BD08 /* MoviesCellViewModel.swift in Sources */,
 				4ADD554E2C1731D40026BD08 /* MainQueueDispatchDecorator.swift in Sources */,
 				4ADD55382C17300D0026BD08 /* UILabel+Extension.swift in Sources */,
@@ -532,9 +583,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ADD54DA2C16C5CD0026BD08 /* DiagnalAppTests.swift in Sources */,
+				4A047B4F2C21C682007F0933 /* SceneDelegateTests.swift in Sources */,
 				4ADD55252C16D53B0026BD08 /* LoadMoviesFeedFromRemoteMockedUseCaseTests.swift in Sources */,
+				4A913E012C2003DF00A5D85E /* UIButton+Ext.swift in Sources */,
+				4A6659492C1F141E001B3C68 /* UIControl+Ext.swift in Sources */,
+				4A7081B42C1ECBC50047B1ED /* MoviesFeedViewControllerTests.swift in Sources */,
+				4A913E032C2048AF00A5D85E /* MoviesSearchViewControllerTests.swift in Sources */,
+				4A6659472C1EF9ED001B3C68 /* MoviesFeedViewController+Ext.swift in Sources */,
+				4A913E052C204B8F00A5D85E /* MoviesSearchViewController+Ext.swift in Sources */,
 				4ADD552A2C16D62C0026BD08 /* FileLoaderClientSpy.swift in Sources */,
 				4ADD55282C16D5ED0026BD08 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				4A66594B2C1F1441001B3C68 /* UIRefreshControl+Ext.swift in Sources */,
+				4A913E0E2C20879600A5D85E /* MoviesFilterLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,7 @@ final class MoviesFeedViewModel{
     
     var hasMoreData: Bool = true
     
-    var feedViewtitle: String = ""
+    var feedViewtitle: String = Localized.MoviesFeed.viewTitle
     
     var cacheFeeds: [Int: MoviesFeed] = [ : ]
     
@@ -58,9 +58,9 @@ extension MoviesFeedViewModel{
                 }
                 self.onLoadingStateChange?(false)
             }
-        }else{
+        }/*else{
             self.onLoadingStateChange?(false)
-        }
+        }*/
     }
 }
 
@@ -90,6 +90,8 @@ extension MoviesFeedViewModel{
             return nil
         }
     }
+    
+  
 }
 
 
